@@ -10,3 +10,17 @@ while i < int(len):
     num[i] = int(x)
     i = i+1
     print(i)
+
+#function
+def addtail(tail, len):
+    tail = int(tail)
+    len = int(len)
+    i = 0
+    ret = tail
+    while i < len - 1:
+        ret = ret * 10 + tail
+        i = i + 1
+    return ret
+
+print(addtail(0,3))
+print(addtail(8,4))

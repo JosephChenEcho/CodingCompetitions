@@ -1,7 +1,6 @@
 #input value
 
 inputsize = input()
-print("inputsize="+inputsize)
 i = 0
 inputsize = int(inputsize)
 strnum = [None]*inputsize

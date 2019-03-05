@@ -23,7 +23,7 @@ def calpower(para, Aarray):
     Asize = len(Aarray)
     returnpower = 0
     alen = 1
-    #print(para)
+    print(para)
     while alen <= Asize:
         start = 0
         while start + alen <= Asize :
@@ -46,7 +46,7 @@ while i < inputsize:
     k = int(numarr[i][1])
     aarr = buildA(int(numarr[i][0]),int(numarr[i][4]) + int(numarr[i][5]),int(numarr[i][6])+int(numarr[i][7]),int(numarr[i][8]),int(numarr[i][2])+int(numarr[i][3]))
     #debug
-    #print(aarr)
+    print(aarr)
     j = 0
     power = 0
     para = [1]*len(aarr)
@@ -54,7 +54,7 @@ while i < inputsize:
     while j < k:
         m = 1
         while m <= len(para):
-            para[m-1] *= m
+            para[m-1] *= m%1000000007 
             m += 1
         #print(calpower(para,aarr))
         totalpower += calpower(para,aarr)

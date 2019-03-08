@@ -23,7 +23,7 @@ while i < inputsize:
 
 #function
 def followcon(start, end, count1, e):
-    print("start = " + str(start) + ", end=" + str(end))
+    #print("start = " + str(start) + ", end=" + str(end))
     tnum = e
     idx = 0
     cnt = 0
@@ -34,9 +34,18 @@ def followcon(start, end, count1, e):
         cnt += tnum%2
         tnum = int(tnum/2)
         idx += 1
-    print("e = "+str(e)+",cnt = " + str(cnt) + ",count1 = " + str(count1))
+    #print("e = "+str(e)+",cnt = " + str(cnt) + ",count1 = " + str(count1))
     return cnt == count1 
 
+#printbit
+def printbit(pnum, pnumsize):
+    bitstr = ""
+    pi = 0
+    while pi < pnumsize:
+        bitstr = str(pnum%2) + bitstr
+        pnum = int(pnum/2)
+        pi += 1
+    return bitstr
         
 #do loop for input
 i = 0
@@ -45,13 +54,15 @@ while i < inputsize:
     j = 0
     
     while j < len(con[i]):
-        print("con =" + str(con[i]))
-        for e in master:
-            st = inputN[i] - int(con[i][j][1])
-            en = inputN[i] - int(con[i][j][0])
-                                 
-            if(not followcon(st,en, int(con[i][j][2]),e)):
-                master.remove(e)
+        #print("con =" + str(con[i][j]))
+        st = inputN[i] - int(con[i][j][1])
+        en = inputN[i] - int(con[i][j][0])
+
+        endi = len(master) - 1
+        while endi >= 0 :
+            if(not followcon(st,en, int(con[i][j][2]),master[endi])):
+                master.remove(master[endi])
+            endi -= 1                                                                
         j += 1
-    print(master)
+    print("Case #" + str(i + 1)+ ": " + printbit(master[inputP[i] - 1],inputN[i]))
     i += 1

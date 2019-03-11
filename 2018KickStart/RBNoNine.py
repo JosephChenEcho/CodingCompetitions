@@ -13,22 +13,28 @@ while i < inputsize:
 
 #function
 def countvalidnum(inumber):
-    retval = 0
-    j = 0
-    while j < len(inumber):
-        retval *= 9
-        retval += int(inumber[j]) % 9
-        j += 1
-    
-    #print(int(retval/9))
-    #print(retval%9)
-    retval -=  int(retval/9)
-    return retval
+    inumber = int(inumber)
+    ret1 = 0
+    while(inumber % 10 != 0):
+        if(inumber % 9 != 0):
+            ret1 += 1
+        inumber -= 1
+    if(inumber%9 != 0):
+        ret1 += 1
+    ret2 = 0
+    base = 1
+    #convertBase9count
+    while(inumber != 0):
+        ret2 = ret2 + base*(inumber%10)
+        inumber = int(inumber/10)
+        base *= 9
+    #print(ret1+int(ret2*8/9))
+    return ret1+int(ret2*8/9)
 
 #do loop for input
 i = 0
 while i < inputsize:
-    print(countvalidnum(startnum[i]))
-    print(countvalidnum(endnum[i]))
+    print("Case #"+str(i+1)+": " + str(countvalidnum(endnum[i])-countvalidnum(startnum[i])+1))
+    
           
     i += 1
